@@ -20,17 +20,22 @@ function addlist(){
     // document.getElementById("numberList").innerHTML = output;
     
 }
+function pushElement(){
+    var tab = [];
+    
+        // add values to the array
+    for(var i = 0; i < items.length; i++){
+       tab.push(parseInt(items[i].innerHTML));
+    }
+    console.log("Tab array --inside push elements",tab);
+    return tab;
+}
 
 
 function sum(){
     consol.style.display = "block";
     var res= 0;
-    var tab = [];
-    
-        // add values to the array
-    for(var i = 0; i < items.length; i++){
-       tab.push(items[i].innerHTML);
-    }
+    var tab = pushElement();
     console.log('tab array ',tab);
     for(i=0;i<tab.length;i++){
         
@@ -44,12 +49,7 @@ function sum(){
 
 function average(){
     var res= 0;
-    var tab = [];
-        
-        // add values to the array
-    for(var i = 0; i < items.length; i++){
-       tab.push(items[i].innerHTML);
-    }
+    var tab = pushElement();
     for(i=0;i<tab.length;i++){
         
         res += parseInt(tab[i]);
@@ -63,13 +63,9 @@ function average(){
 
 function findMin(){
     var res= 0;
-    var tab = [];
-        
-        // add values to the array
-    for(var i = 0; i < items.length; i++){
-        tab.push(parseInt(items[i].innerHTML));
+    var tab = pushElement();
 
-    }
+    
     // console.log("inside find min",tab);
     var minimum = Math.min(...tab);
     consol.innerHTML += `<br> Smallest element is ${minimum}`;
