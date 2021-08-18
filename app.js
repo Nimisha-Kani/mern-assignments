@@ -8,9 +8,14 @@ function addlist(){
         
         output += `<li> ${num.value} </li>`;
     }
-    num.value.innerHTML = "none";
+    num.value.innerHTML = '';
     document.getElementById("numberList").innerHTML = output;
     
+}
+function createMenuItem(name) {
+    let li = document.createElement('li');
+    li.textContent = name;
+    return li;
 }
 
 function sum(){
