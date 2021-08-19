@@ -2,7 +2,7 @@ let num = document.getElementById("number");
 let consol = document.getElementById("console");
 let numberList = document.getElementById("numberList");
 let items = numberList.getElementsByTagName("li");
-// var output = '';
+
 
 function createMenuItem(name) {
     let li = document.createElement('li');
@@ -12,12 +12,10 @@ function createMenuItem(name) {
 function addlist(){
     if(num.value !=''){
         
-        // output += `<li> ${num.value} </li>`;
         numberList.appendChild(createMenuItem(num.value));
         num.value.innerHTML = '';
     }
     
-    // document.getElementById("numberList").innerHTML = output;
     
 }
 function pushElement(){
@@ -73,7 +71,7 @@ function findMin(){
 }
 
 function clearDisplay(){
-    // consol.textContent = " ";
+    
     console.log("inside clear method");
     consol.style.display = 'none';
     numberList.style.display ="none";
