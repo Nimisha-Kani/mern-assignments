@@ -1,7 +1,7 @@
 
 function findEvens(arr){
     var newArr=[];
-    for(num of arr){
+    for(let num of arr){
         if(num%2==0){
             newArr.push(num);
         }
@@ -11,7 +11,7 @@ function findEvens(arr){
 
 function findPrimes(arr){
     var newArr=[];
-    for(num of arr){
+    for(let num of arr){
         let flag=0;
         for(let i=2;i<num/2;i++){
             if(num%i==0){
@@ -28,7 +28,7 @@ function findPrimes(arr){
 }
 function findFactorsOf3And5(arr){
     var newArr = [];
-    for(num of arr){
+    for(let num of arr){
         if(num%3==0 && num%5==0){
             newArr.push(num);
         }
