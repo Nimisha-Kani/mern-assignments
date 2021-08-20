@@ -21,8 +21,8 @@ var books = [
 function printArray(books){
     console.log('Title       \tAuthor        \tPrice\tRating');
     for(let book of books){
-        console.log(`${book.title}\t${book.author}\t${book.price}\t\t${book.rating}`)
-}
+        console.log(`${book.title}\t${book.author}\t${book.price}\t\t${book.rating}`);
+    }
 }
 function avgPrice(books){
     let result = 0;
@@ -58,17 +58,15 @@ function partialTitile(book, element){
         // console.log("print book.title[i]", i.toLowerCase());
         
         for(let j of element){
-            if(i.toLowerCase() == j.toLowerCase()){
-
+            if(i.toLowerCase() === j.toLowerCase()){
+                // console.log("i === j",i.toLowerCase(),j.toLowerCase());
                 s+=i.toLowerCase();
             }
-            
-        }
-        
-        if(s.toLowerCase()==element.toLowerCase()){
-            // console.log("sss==",s,"inside equals");
-            return true;
-        }
+            if(s.toLowerCase()==element.toLowerCase()){
+                // console.log("sss==",s,"inside equals");
+                return true;
+            }
+        }    
         
     }
     return false;
@@ -111,7 +109,7 @@ avgRating(books);
 let bookByauthor = find(books, authorName, 'Paulo Coelho');
 console.log("Book name  ", bookByauthor);
 
-let bookBytitle = find(books, partialTitile, 'the');
+let bookBytitle = find(books, partialTitile, 'harry');
 console.log("Book names with partial title ",bookBytitle);
 
 let bookByprice = find(books,priceRange,150,300);
