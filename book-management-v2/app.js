@@ -27,6 +27,12 @@ function showBook(book){
     document.getElementById("bookAuthor").innerHTML=book.author;
     document.getElementById("bookPrice").innerHTML=book.price;
     document.getElementById("avg").innerHTML ="Average Rating is " + book.getRating();
+    for(let i in books){
+        if(books[i]=== book){
+            document.getElementById("book-no").innerHTML = (Number(i)+1)+"/"+books.length;
+        }
+    }
+   
 
     let reviews = document.getElementById("reviews");
     reviews.innerHTML='';
