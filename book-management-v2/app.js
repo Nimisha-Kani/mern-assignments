@@ -15,7 +15,7 @@ books[1].addReview(createReview('One of all time greatest classic',4.8));
 books[1].addReview(createReview('Adventure, excitement and lengthy', 4.2));
 
 books[2].addReview(createReview('Just another book! ',4.2));
-books[0].addReview(createReview('written by J K Rowling',4.3));
+books[2].addReview(createReview('written by J K Rowling',4.3));
 
 
 
