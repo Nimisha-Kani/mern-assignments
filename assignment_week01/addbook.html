@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book's Web</title>
+    <style>
+        .addBook input{
+            margin: 5px;
+        }
+        .addBook button{
+            color: black;
+            background-color: grey;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Book</h1>
+    <div class="addBook">
+        Title     : <input type="text" id="addTitle"><br>
+        Author    : <input type="text" id="addAuthor"><br>
+        Price     : <input type="text" id="addPrice"><br>
+        Cover:<input type="text" id="addCover"><br>
+        <br>
+        <button id="save" onclick="saveBook()">Save Book</button>
+        <p id="bookStatus"></p>
+    </div>
+
+    
+    <script src="book.js"></script>    
+</body>
+
+</html>

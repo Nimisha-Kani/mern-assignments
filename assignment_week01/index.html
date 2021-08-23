@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book's Web</title>
+    <style>
+        table{
+            width:100%;
+            border:1px solid gray;
+        }
+        th{
+            background-color:black;
+            color:white;
+            font-size:1.2em;
+            font-weight: bold;
+            text-align: center;
+        }
+        td{
+            font-size:1.2em;
+            border:1px solid gray;
+            width: 100px;
+            height: 200px;
+        }
+        img{
+            width: 100px;
+            height: 150px;
+        }
+        .addBtn{
+            color:black;
+            background-color: grey;
+            padding: 10px;
+            margin-left: 45%;
+            /* border: 1px solid black; */
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Book's Web</h1>
+    <button class="addBtn" onclick="addBtn()">Add Book</button>
+    <table>
+        <thead>
+           <tr>
+               <th>Cover</th>
+               <th>Title</th>
+               <th>Author</th>
+               <th>Price</th>
+               <th>Action</th>
+           </tr>
+        </thead>
+        <tbody id="reviews">
+            <!-- <tr>
+                <td>Review about the book</td>
+                <td>4.5/5</td>
+            </tr>
+            <tr>
+                <td>Review 2 about the book</td>
+                <td>4.1/5</td>
+            </tr> -->
+            
+        </tbody>
+    </table>
+
+    <script src="book.js"></script>
+
+</body>
+</html>

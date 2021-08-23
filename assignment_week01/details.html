@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book's Web</title>
+    <style>
+        h2{
+            color: navy;
+        }
+        img{
+            float: right;
+            height: 400px;
+            width: 300px;
+            margin-top: -100px;
+            
+        }
+        .detail{
+            margin: 10px;
+        }
+        .addReview{
+            margin: 10px;
+        }
+        .addReview input{
+            margin: 5px;
+        }
+        .addReview button{
+            color: black;
+            background-color: grey;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body onload="showBook(book)">
+    <h1>Book' Web</h1>
+    <div class="detail">
+        <h2 id="title"></h2>
+        <p id="bookdetails"></p>
+        <div class="image" id="bookImage"></div>
+    </div>
+
+
+    <div class="addReview">
+        <h2>Add Review</h2>
+        Name: <input type="text" id="name"><br>
+        Rating: <input type="number" id="rating"><br>
+        Details: <input type="text" id="details"><br>
+        <br>
+        <button id="saveReview" onclick="saveReview(book)">Save Review</button>
+        <p id="reviewStatus"></p>
+
+    </div>
+    <br><br>
+    <hr>
+    <div class="showReview" id="showReview">
+        <h2>Reviews</h2>
+
+    </div>
+    <script src="book.js"></script>
+</body>
+</html>
