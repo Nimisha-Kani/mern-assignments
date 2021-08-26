@@ -81,7 +81,7 @@ class  BookManager{
              
         }
         this.reviews = arrReviews; 
-        this.reviews = this.loadReviews();
+        // this.reviews = this.loadReviews();
         
     }
 
@@ -161,6 +161,7 @@ class  BookManager{
         }
 
         return undefined;
+        
     }
 
     removeBook(id){

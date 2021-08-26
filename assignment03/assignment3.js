@@ -54,22 +54,18 @@ function titlePrice(books){
 }
 function partialTitile(book, element){
     let s='';
-    for(let i of book.title){
-        // console.log("print book.title[i]", i.toLowerCase());
-        
-        for(let j of element){
-            if(i.toLowerCase() === j.toLowerCase()){
-                // console.log("i === j",i.toLowerCase(),j.toLowerCase());
-                s+=i.toLowerCase();
-            }
-            if(s.toLowerCase()==element.toLowerCase()){
-                // console.log("sss==",s,"inside equals");
-                return true;
-            }
-        }    
+    let ind = 0;
+    let len = element.length;
+    let str =book.title
+
+    for(let i=0;i<=len;i++){
+        // console.log("book",book)
+        // console.log(" inside partial function" ,i);
+        if(i===element[ind]){
+            s+=i;
+        }
         
     }
-    return false;
 }
 function authorName(book,element){
     if(book.author==element){

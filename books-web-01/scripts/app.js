@@ -44,7 +44,7 @@ function showReviews(id){
     rev.innerHTML = '';
     for(let review of reviewArray){
         rev.innerHTML+=`
-                        ${review.name} is rated ${review.rating}<br>
+                        ${review.name} rated ${review.rating}<br>
                         ${review.comment}<br><hr>
                         `;
     }
