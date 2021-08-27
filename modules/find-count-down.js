@@ -6,13 +6,15 @@ function countDown(val){
         let res=val;  
     
         let iid = setInterval(()=>{
-            if(val<0) 
+            if(val<0) {
+                clearInterval(iid)
                 return reject(new Error(`Invalid number ${val}`));
-            
+            }
             if(res>=0){
                 console.log(res--);
             }
             else{
+                clearInterval(iid);
                 return resolve();
             }
             

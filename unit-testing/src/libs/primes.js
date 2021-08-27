@@ -1,20 +1,31 @@
 
-function isPrimeSync(number) {
-    if (number < 2) return false;
-    for (let i = 2; i < number; i++)
-        if (number % i === 0)
+
+const isPrimeSync=(number)=>{
+    if(number<2)
+        return false;
+    for(let i=2;i<number;i++){
+        if(number%i===0)
             return false;
+    }
     return true;
 }
 
-function findPrimesSync(min, max) {
-    let primes = [];
-    for (let i = min; i < max; i++)
-        if (isPrimeSync(i))
-            primes.push(i);
 
-    return primes;
+const findPrimesSync=(min,max)=>{
+
+    if(max<=min)
+        throw new Error(`Invalid Range: ${min} >= ${max}`);
+        //return [];
+
+    let result=[];
+
+    for(let i=min;i<max;i++)
+        if(isPrimeSync(i))
+            result.push(i);
+
+    return result;
 }
+
 
 function findPrimes(min, max, cb) {
 
@@ -48,39 +59,6 @@ function findPrimes(min, max, cb) {
 }
 
 
-function findPrimesAsync(min, max) {
-
-    return new Promise(function (resolve, reject) {
-        let lo = min;
-        let hi = Math.min(max, min + 1000);  //hi will be min+1000 or max whichever is less
-        let primes = [];
-
-        let iid = setInterval(() => {
-
-            if (max <= min) {
-                //cb(new Error(`Invalid Range ${min}-${max}`));  //return the Error
-                return reject(new Error(`Invalid Range ${min}-${max}`));
-            }
-
-            if (lo >= max) { //job is over
-                //console.log('clearing interval...');
-                
-                //cb(null, primes);  //inform the client about the primes
-                return resolve(primes);
-            }
-
-            for (let i = lo; i < hi; i++) {
-                if (isPrimeSync(i))
-                    primes.push(i);
-            }
-
-            lo = hi;
-            hi = Math.min(max, lo + 1000);
-
-        }, 10); //repeat this after every 100 ms
-
-    });
-}
 
 let EventEmitter=require('events');
 
@@ -92,8 +70,12 @@ function findPrimesEvent(min, max) {
     let hi = Math.min(max, min + 1000);  //hi will be min+1000 or max whichever is less
     //let primes = [];
     let total=0;
+    let abortRequested=false;
+    let lastPrimeFound=NaN;
 
     let iid = setInterval(() => {
+
+        
 
         if (max <= min) {
             //cb(new Error(`Invalid Range ${min}-${max}`));  //return the Error
@@ -109,31 +91,37 @@ function findPrimesEvent(min, max) {
             clearInterval(iid); //stop interval
             //cb(null, primes);  //inform the client about the primes
             //return resolve(primes);
-            return emitter.emit('done', {min,max,total});  //emitted only once
+            return emitter.emit('done', total);  //emitted only once
         }
 
         for (let i = lo; i < hi; i++) {
             if (isPrimeSync(i)){
                 //primes.push(i);
+                lastPrimeFound=i;
                 total++;
-                
-                
                 emitter.emit('prime', {min,max,index:total,prime:i}); //repeated everythime we find a prime
-            }   
+            }
         }
+
+        let percent=parseInt( (lo-min)/(max-min)*100);
+
+        if(abortRequested){
+            clearInterval(iid);
+            emitter.emit('aborted',{min,max,percent,total,lastPrimeFound})
+            return ;
+        }
+
 
         lo = hi;
         hi = Math.min(max, lo + 1000);
-        let percent= (lo-min)/(max-min)*100
-        if(total===1000){
-            
-            emitter.emit('abort',{min,max,index:total,prime:i, percent});
-            return;
-        }
+       
         emitter.emit('progress',{min,max,percent}); //repeated afer every 1000 calculation
-        
+
     }, 10); //repeat this after every 100 ms
-    
+
+    emitter.on('abort',()=>{
+        abortRequested=true;
+    });
 
 
    return emitter;
@@ -143,25 +131,9 @@ function findPrimesEvent(min, max) {
 
 
 
-
-// module.export.isPrimeSync=isPrimeSync;
-// module.exports.findPrimesSync=findPrimesSync;
-// mdoule.exports.findPrimes=findPrimes;
-
-
-//create an object and add the funciton here ES5
-// module.exports={
-//     isPrimeSync:isPrimeSync,
-//     findPrimes:findPrimes,
-//     findPrimesSync:findPrimesSync
-// }
-
-//ES2015 --> IF the key and value in an object is going to be same you  can write just the name
-
-module.exports = {
+module.exports={
+    findPrimesSync,    //findPrimesSync:findPrimesSync
     isPrimeSync,    //isPrimeSync:isPrimeSync
-    findPrimes,  //findPrimes:findPrimes
-    findPrimesAsync,    //findPrimesAsync:findPrimesAsync
+    findPrimes,    //findPrimes:findPrimes
     findPrimesEvent
 }
-
