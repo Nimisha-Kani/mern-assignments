@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <link rel="stylesheet" href="/font-awesome.min.css">
+    <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+    <div class='jumbotron'>
+        <h1 class='jumbotron'>Book's Web</h1>
+        <nav>
+            <ul>
+                <li><a href="/book/list">Books</a></li>
+                <li><a href="/book/add">Add Books</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container"><br>
+        <h3>Delete <%= book.title%>?</h3>
+        <br>
+        <div class="row">
+            <h5>This process can't be undone. Are you sure?</h5>
+            <div class="delete-btn">
+                
+                <a class='btn btn-primary btn-lg' href="/book/delete/yes/<%=book._id%>">Yes! Delete</a>
+                <a class='btn btn-primary btn-lg' href="/book/list">No</a>
+            </div>
+
+        </div>
+    </div>
+    
+</body>
+</html>
