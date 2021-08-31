@@ -113,31 +113,21 @@ app.get('/book/delete/yes/:id',(request,response)=>{
     let id= request.params.id;
     console.log('sending books delete', request.params);
     
-    // let book=books.find(b=>b._id===id);
-    fs.readFile(dbPath,(err,data)=>{
-        if(err){
-            console.log('error reading data');
-        }
-        let bookData = JSON.parse(data);
-        // console.log(bookData);
-        bookData.forEach((element,i) => {
-            if(element._id===id){
-                bookData.splice(i,1);
-                books.splice(i,1);
-            }
-                
-        });
-        console.log(bookData.length);
-        fs.writeFile(dbPath, JSON.stringify(bookData), (error)=>{
-            if(error){
-                console.log('error saving data',error);
-            } 
-    
-            
-            response.redirect('/book/list'); //goto book list page
-        });
+    books.forEach((element,i) => {
+                if(element._id===id){
+                    
+                    books.splice(i,1);
+                }
+                    
+            });
+    fs.writeFile(dbPath, JSON.stringify(books), (error)=>{
+        if(error){
+            console.log('error saving data',error);
+        } 
+
+        response.redirect('/book/list');
+         //goto book list page
     });
-    
 
     //pass the book object here
     // response.render('book/delete',{book}); 
