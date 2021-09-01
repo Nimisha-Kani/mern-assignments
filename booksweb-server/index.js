@@ -2,6 +2,7 @@ const express=require('express');
 const Path=require('path');
 const bodyParser=require('body-parser');
 const fs=require('fs');
+const expressLayouts = require('express-ejs-layouts')
 
 const app=express();
 //add your middlewares here
@@ -11,7 +12,7 @@ app.set('view engine','ejs');
 //set view path location
 app.set('views', Path.join(__dirname, 'src','views'))
 
-
+app.use(expressLayouts);
 //express should automatically handle static files
 app.use(express.static(Path.join(__dirname, 'public')));
 
