@@ -1,0 +1,40 @@
+.coverimage{
+    width:500px;
+    border:10px solid maroon;
+    border-radius: 5%;
+    box-shadow: 10px 10px 10px gray;
+}
+
+.nav-right{
+    float:right;
+}
+
+
+.footer, footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+  }
+
+  footer a, footer a:hover{
+      color:white;
+  }
+
+.current-img{
+    width: 400px;
+    height: 300px;
+    /* border: 5px solid black; */
+
+    border-radius: 10px;
+}
+.refresh{
+    margin-top: 10px;
+}
+
+.quotes{
+    font-weight: bold;
+}
