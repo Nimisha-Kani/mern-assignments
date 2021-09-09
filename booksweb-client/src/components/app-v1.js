@@ -5,8 +5,6 @@ import AppHome from './app-home';
 import BookDetails from './book-details';
 import BookList from './book-list';
 
-import If from './if';
-
 const allBooks = [
     {
         "_id": "5f4fd116c277b45acc698bce",
@@ -137,21 +135,18 @@ const Component=({title})=>{
     return <div className='main'>
             <AppHeader title={title} />
             <div className='container'>
+               
 
-                <If condition={selectedBook}>
-                    <BookDetails book={selectedBook} onExit={()=>selectBook(null)}/>
-                </If>
-
-                <If condition={!selectedBook} >
-                    <BookList books={books} 
+                {
+                    selectedBook?( 
+                        <BookDetails book={selectedBook} onExit={()=>selectBook(null)}/>
+                    ) :(
+                        <BookList books={books} 
                           onSelectBook={handleSelectBook} 
                           onDeleteBook={handleDeleteBook}
-                          />  
-                </If>
-                
-               
-
-               
+                          />             
+                    )
+                }
                 
             </div>
 

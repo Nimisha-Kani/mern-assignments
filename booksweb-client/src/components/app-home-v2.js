@@ -51,6 +51,8 @@ let images = [
 
 ]
 
+
+
 const getRandomQuote = () => {
     let quoteIndex = Math.floor(Math.random() * quotes.length);
     return quotes[quoteIndex];
@@ -62,32 +64,43 @@ const getRandomImage = () => {
     return image;
 }
 
+
+
+
 const Component = () => {
 
     const [image, setImage] = React.useState(getRandomImage());
     const [quote, setQuote] = useState(getRandomQuote());
 
-   
+    useEffect(() => {
+        console.log('inside standard use effect');
+    });
+
+
     useEffect(()=>{
-        console.log('setting autorefresh');
-        const iid= setInterval(()=>{
-            
-            setImage(getRandomImage());
-            setQuote(getRandomQuote());
-        },5000);
-   
+        console.log('useEffect called because image is updated');
+    },[image]);
 
-        //cleanup code
-        return ()=>{
-            console.log('stopping the timer');
-            clearInterval(iid);
-        }
+    useEffect(()=>{
+        console.log('useEffect called because quote is updated');
+    },[quote]);
 
+    useEffect(()=>{
+        console.log('useEffect called because either image or quote is updated');
+    },[quote,image]);
+
+    useEffect(()=>{
+        console.log('useEffect with [] dependency called ');
     },[]);
+
 
     console.log('component updated');
 
 
+    // const iid= setInterval(()=>{
+    //     setImage(getRandomImage());
+    //     setQuote(getRandomQuote());
+    // },5000);
 
     const refresh = () => {
         setImage(getRandomImage());
