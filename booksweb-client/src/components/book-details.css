@@ -1,6 +1,6 @@
-//an h3 present in a element with class .book-details
+/* //an h3 present in a element with class .book-details
 //.book-details is applied on the parent element
-//h3 is a child inside the parent
+//h3 is a child inside the parent */
 .book-detail h3{
     font-family: 'Allison', cursive;
     font-size:30px;

@@ -1,8 +1,10 @@
+const { request } = require('express');
 const express=require('express');
 const {BookService}=require('../services/book-service');
 const {handleRequest}=require('../utils/express-utils');
+const reviewService = require('../services/review-service');
 
-const reviewService=require('../services/review-service');
+
 
 
 const getRouter= ()=>{
@@ -24,7 +26,7 @@ const getRouter= ()=>{
   router.get('/titles', handleRequest(service.getAllTitles));
 
   //---> api/books/Authors
-  router.get('/authors',handleRequest(service.getAllAuthors));
+  // router.get('/authors',handleRequest(service.getAllAuthors));
   
 
     //---->  api/books/5555
@@ -33,20 +35,14 @@ const getRouter= ()=>{
     .get(handleRequest(service.getBookByIsbn))
     .put(handleRequest(service.updateBook))
     .delete(handleRequest(service.removeBook));
-
+ 
     router
     .route('/:id/reviews')
     .get(handleRequest(reviewService.getAllReviews))
-    .post(handleRequest(reviewService.addReview))
-
-
-    
-    router
-    .route('/:id/rating')
-    .get(handleRequest(reviewService.getAvgRating))
+    .post(handleRequest(reviewService.addReview));
 
  
-  router.get('/by/:author',handleRequest(service.getBooksByAuthor));
+  // router.get('/by/:author',handleRequest(service.getBooksByAuthor));
 
   router.get('/search/term',handleRequest(service.search));
   

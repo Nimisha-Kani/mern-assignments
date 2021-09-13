@@ -1,10 +1,12 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+import SearchBar from './search-bar';
 
 
 const component = ({ title }) => {
 
     return <nav className="navbar navbar-expand-lg   navbar-dark bg-dark" >
-        <a className="navbar-brand" href="#">{title}</a>
+        <Link className="navbar-brand" to="/">{title}</Link>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
         </button>
@@ -12,33 +14,30 @@ const component = ({ title }) => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
                 <li className="nav-item active">
-                    <a className="nav-link" href="#">Books <span className="sr-only">(current)</span></a>
+                    <Link className="nav-link" to="/book/list">Books <span className="sr-only">(current)</span></Link>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="#">Add Book</a>
+                    <Link className="nav-link" to="/book/add">Add Book</Link>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="#">Authors</a>
+                    <Link className="nav-link" to="/author/list">Authors</Link>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="#">Add Author</a>
+                    <Link className="nav-link" to="/author/add">Add Author</Link>
                 </li>
 
             </ul>
-            <form className="form-inline my-2 my-lg-0">
-                <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            <SearchBar onSearch={text=>console.log('searching for ',text)}/>
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Members
-                    </a>
+                    </Link>
                     <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a className="dropdown-item" href="#">Login</a>
-                        <a className="dropdown-item" href="#">Register</a>
+                        <Link className="dropdown-item" to="/user/signin">Login</Link>
+                        <Link className="dropdown-item" to="/user/signup">Register</Link>
                         <div className="dropdown-divider"></div>
-                        <a className="dropdown-item" href="#">Login</a>
+                        <Link className="dropdown-item" to="/user/signout">Logout</Link>
                     </div>
                 </li>
                 

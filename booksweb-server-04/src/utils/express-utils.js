@@ -28,9 +28,9 @@ function handleRequest( requestHandler ){
                 request,            //in rare case you umay need 
                 response            //direct access to request and response
             };
-    
+            // console.log("inside exoress utils data",data)
             const result=await requestHandler(data);
-
+           
             let status= statusMap[request.method.toLocaleLowerCase()];
             response.status(status).json(result);
 

@@ -1,19 +1,38 @@
-import React from 'react';
+import React, {useState,useEffect}from 'react';
 import "./book-details.css";
-import Expander from './expander';
+import {withRouter} from 'react-router-dom';
+import {BookService} from '../services/book-service';
+import Loading from './loading';
+import NotFound from './not-found';
 
 
+const Component=(props)=>{
 
-const Component=({book,onExit})=>{
-
-    if(!book)
-        return null; //no content to display
+    const [book,setBook]=useState(null,props,);
+    const isbn=props.match.params.isbn;
+    useEffect(()=>{
+        
+        //book will come after a delay
+        BookService.instance.getBookByIsbn(isbn).then((book)=>{
+            console.log(`got for ${isbn}: ${book}`);
+            setBook(book);
+        });        
+    },[props.match.params.isbn]);
     
+    if(book===null){
+        return <Loading title={`searching for ${isbn}`} />
+    }
+
+    if(book===undefined){
+        return <NotFound message={`Sorry no book with isbn: ${isbn} present in our record`}/>
+    }
+
+
     return (
         <div className='book-details'>
             <h2>{book.title}</h2>
             <h3>by {book.author}</h3>
-            <button class='btn btn-primary' onClick={onExit}>Back to List</button>
+            
             <div className='book-info'>
                 <img src={book.cover}/>
                 <div className='info'>
@@ -24,7 +43,7 @@ const Component=({book,onExit})=>{
                     <hr/>
                     <h4>Synopsis</h4>
                     <p>{book.description}</p>
-                    <Expander title="Synopsis" content={book.description} short={200} />
+                    {/* <Expander title="Synopsis" content={book.description} short={200} /> */}
                 </div>
             </div>
         </div>
@@ -32,4 +51,4 @@ const Component=({book,onExit})=>{
 }
 
 
-export default Component;
+export default withRouter(Component);

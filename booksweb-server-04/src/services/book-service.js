@@ -19,11 +19,12 @@ class  BookService{
     constructor(){
         //bindMethods(this);   
         
-        const functions=[ this.getAllAuthors, 
+        const functions=[ 
+                        //   this.getAllAuthors, 
                           this.getAllBooks, 
                           this.addBook, 
                           this.getBookByIsbn, 
-                          this.getBooksByAuthor,
+                        //   this.getBooksByAuthor,
                           this.getBooksByTag,
                           this.getBooksByTitle, 
                           this.removeBook,
@@ -83,15 +84,22 @@ class  BookService{
     }
 
     async updateBook({id,body}){
-         let book=await this.getBookByIsbn({id});
+        //  let book=await this.getBookByIsbn({id});
         return await Book.findOneAndUpdate({isbn:id},body);
     }
-    async getAllAuthors(){
-        return await Book.distinct('author');
-    }
-    async getBooksByAuthor({author}){
-        const a= new RegExp(author,'i');
-        return await Book.find({author:a})
+    // async getAllAuthors(){
+    //     return await Book.distinct('author');
+    // }
+    // async getBooksByAuthor({author}){
+    //     const a= new RegExp(author,'i');
+    //     return await Book.find({author:a})
+    // } 
+
+    async getAllReviews(){
+        // let id = request.params()
+        let rev = await Book.find({reviews})
+        console.log(rev);
+        return rev;
     }
 
     async getBooksByTitle({title}){

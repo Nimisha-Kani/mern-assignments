@@ -6,7 +6,7 @@ const {handleRequest}=require('../utils/express-utils');
 const getRouter=()=>{
 
     let router=express.Router();
-    
+
     router
         .route("/")
         .get(handleRequest(userService.getAllUsers))

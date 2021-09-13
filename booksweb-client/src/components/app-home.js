@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import withDate from './with-date-hoc';
+import withExpander from './with-expander-hoc';
 
 let quotes = [
     {
@@ -62,14 +64,14 @@ const getRandomImage = () => {
     return image;
 }
 
-const Component = () => {
+const Component = (props) => {
 
     const [image, setImage] = React.useState(getRandomImage());
     const [quote, setQuote] = useState(getRandomQuote());
 
    
     useEffect(()=>{
-        console.log('setting autorefresh');
+     //   console.log('setting autorefresh');
         const iid= setInterval(()=>{
             
             setImage(getRandomImage());
@@ -79,13 +81,13 @@ const Component = () => {
 
         //cleanup code
         return ()=>{
-            console.log('stopping the timer');
+          //  console.log('stopping the timer');
             clearInterval(iid);
         }
 
     },[]);
 
-    console.log('component updated');
+    //console.log('component updated');
 
 
 
@@ -102,10 +104,12 @@ const Component = () => {
         setQuote(getRandomQuote());
     }
 
-
+    //console.log('AppHome props',props);
 
     return (
         <div className='app-home'>
+            <h2>{props.title}</h2>
+            <h3>{props.date.toLocaleTimeString()}</h3>
             <img onClick={refreshImage} className='coverimage' src={image} alt="Book's Home" />
             <div onClick={refreshQuote}>
                 <p className='quote'>{quote.quote}</p>
@@ -119,4 +123,4 @@ const Component = () => {
 
 
 
-export default Component;
+export default withExpander(withDate(Component),true);
