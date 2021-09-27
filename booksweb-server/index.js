@@ -11,7 +11,7 @@ const app=express();
 app.set('view engine','ejs');
 //set view path location
 app.set('views', Path.join(__dirname, 'src','views'))
-
+ 
 app.use(expressLayouts);
 //express should automatically handle static files
 app.use(express.static(Path.join(__dirname, 'public')));

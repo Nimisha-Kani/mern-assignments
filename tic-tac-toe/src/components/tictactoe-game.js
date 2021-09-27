@@ -63,14 +63,11 @@ class component extends React.Component {
             let scores = this.state.scores;
             scores.push(score);
             console.log('scoress',scores);
-            this.setState({scores:scores})
+            this.setState({scores:[...scores]})
             this.setState({score:[...score]})
             console.log(this.state.scores);
             
             
-            
-                
-
         }
 
 
@@ -138,7 +135,7 @@ class component extends React.Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {console.log(this.state.scores,"scoress in render")}
+                            
                             { this.state.scores.map((ele,i)=>
                                 <tr>
                                     <td>{ele[0]}</td>
@@ -150,7 +147,7 @@ class component extends React.Component {
                         </tbody>
                             
                                                 
-                        </table>
+                    </table>
 
                 </span>
                 </div>

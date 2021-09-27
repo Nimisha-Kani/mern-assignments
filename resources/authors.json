@@ -1,0 +1,46 @@
+[{ 
+  "_id": {
+    "$oid": "6138f8ac410108e59892065e"
+  },
+  "name": "Vivek Dutta Mishra",
+  "id": "vivek-dutta-mishra",
+  "photo": "/images/authors/vivek-dutta mishra.jpg",
+  "biography": "Author Vivek Dutta Mishra",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6138f8ac410108e598920661"
+  },
+  "name": "Jeffrey Archer",
+  "id": "jeffrey-archer",
+  "photo": "/images/authors/jeffrey-archer.jpg",
+  "biography": "Author Jeffrey Archer",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6138f8ac410108e598920663"
+  },
+  "name": "Ramdhari Singh Dinkar",
+  "id": "ramdhari-singh dinkar",
+  "photo": "/images/authors/ramdhari-singh dinkar.jpg",
+  "biography": "Author Ramdhari Singh Dinkar",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6138f8ac410108e598920665"
+  },
+  "name": "John Grisham",
+  "id": "john-grisham",
+  "photo": "/images/authors/john-grisham.jpg",
+  "biography": "Author John Grisham",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6138f8ad410108e598920667"
+  },
+  "name": "JK Rowling",
+  "id": "jk-rowling",
+  "photo": "/images/authors/jk-rowling.jpg",
+  "biography": "Author JK Rowling",
+  "__v": 0
+}]

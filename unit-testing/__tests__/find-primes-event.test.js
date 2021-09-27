@@ -24,15 +24,15 @@ describe('findPrimesEvent Test',()=>{
         
         let e = findPrimesEvent(10,1);
         
-            e.on('error',(data)=>{
+            e.on('error',(error)=>{
                 try{
                     
-                    console.log(data.message);
-                    expect(data.message).toMatch(/Invalid Range*/);
+                    console.log(error.message);
+                    expect(error.message).toMatch(/Invalid Range*/);
                     done();
                 }
-                catch(error){
-                    done(error);
+                catch(err){
+                    done(err);
                 }
             });
         

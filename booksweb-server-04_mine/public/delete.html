@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container"><br>
+        <h3 id="deleteTitle">Delete </h3>
+        <br>
+        <div class="row">
+            <h5>This process can't be undone. Are you sure?</h5>
+            <div class="delete-btn">
+                
+                <button class='btn btn-primary btn-lg' onclick='bookDelete()' >Yes! Delete</button>
+                <a class='btn btn-primary btn-lg' href="http://localhost:5000/">No</a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        async function bookDelete(){
+            let isbn=window.location.search.replace('?isbn=','');
+            console.log(isbn);
+            let deleteResponse = await fetch(`api/books/${isbn}`, {
+                method: 'delete',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({id:isbn})
+                })
+            window.location = "http://localhost:5000/";
+            console.log('deleteReponse',deleteResponse);
+        }
+    </script>
+</body>
+</html>
